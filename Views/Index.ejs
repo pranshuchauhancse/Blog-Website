@@ -36,7 +36,9 @@
             <div class="card h-100 shadow-sm">
               <a href="/posts/<%= post._id %>" class="clickable">
                 <% if (post.image) { %>
-                  <img src="<%= post.image %>" class="card-img-top" alt="Blog Image" style="height: 200px; object-fit: cover;">
+                  <img src="<%= post.image.startsWith('http') ? post.image : '/' + post.image %>" class="card-img-top" alt="Blog Image" style="height: 200px; object-fit: cover;">
+                <% } else { %>
+                  <img src="/images/default.jpg" class="card-img-top" alt="Default Image" style="height: 200px; object-fit: cover;">
                 <% } %>
               </a>
               <div class="card-body">
