@@ -18,6 +18,14 @@
     "mongoose": "^8.17.0",
     "open": "^10.2.0"
   },
-  "devDependencies": {},
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranshuchauhancse/Blog-Website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pranshuchauhancse/Blog-Website/issues"
+  },
+  "homepage": "https://github.com/pranshuchauhancse/Blog-Website#readme",
+  "devDependencies": {}
 }
