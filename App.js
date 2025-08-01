@@ -8,10 +8,11 @@ const app = express();
 const postRoutes = require('./routes/post');
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/blogDB', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
 
 // Middleware
 app.set('view engine', 'ejs');
