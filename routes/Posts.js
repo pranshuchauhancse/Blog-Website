@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-// Schema
+// Mongoose Schema
 const postSchema = new mongoose.Schema({
   title: String,
   author: String,
@@ -14,48 +14,49 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model('Post', postSchema);
 
-// Show all posts
+// GET: Show all posts on homepage
 router.get('/', async (req, res) => {
   const posts = await Post.find();
   res.render('index', { posts });
 });
 
-// New post form
+// GET: New post form
 router.get('/posts/new', (req, res) => {
   res.render('new');
 });
 
-// Create a new post
+// POST: Create a new blog post
 router.post('/posts', async (req, res) => {
   const { title, author, image, description, date, category } = req.body;
   await Post.create({ title, author, image, description, date, category });
   res.redirect('/');
 });
 
-// Edit form
+// GET: Edit post form
 router.get('/posts/:id/edit', async (req, res) => {
   const post = await Post.findById(req.params.id);
+  if (!post) return res.status(404).send('Post not found');
   res.render('edit', { post });
 });
 
-// Update post
+// PUT: Update a blog post
 router.put('/posts/:id', async (req, res) => {
   const { title, author, image, description, date, category } = req.body;
   await Post.findByIdAndUpdate(req.params.id, { title, author, image, description, date, category });
   res.redirect('/');
 });
 
-// Delete post
+// DELETE: Remove a post
 router.delete('/posts/:id', async (req, res) => {
   await Post.findByIdAndDelete(req.params.id);
   res.redirect('/');
 });
 
-// View single post (read page)
+// GET: Read full blog post
 router.get('/posts/:id', async (req, res) => {
   const post = await Post.findById(req.params.id);
   if (!post) return res.status(404).send('Post not found');
-  res.render('read', { post }); // Make sure your read.ejs exists!
+  res.render('read', { post }); // Make sure views/read.ejs exists
 });
 
 module.exports = router;

@@ -1,39 +1,54 @@
+/* Global Styles */
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #f4f4f4;
   margin: 0;
   padding: 0;
 }
 
+/* Container */
 .container {
-  width: 80%;
+  width: 90%;
+  max-width: 1200px;
   margin: 2rem auto;
   text-align: center;
 }
 
+/* Blog List Grid */
 .blog-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 1.5rem;
+  justify-content: center;
 }
 
+/* Blog Post Card */
 .blog-post {
   background: white;
   padding: 1rem;
-  margin: 1rem;
-  width: 30%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.blog-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Blog Image */
 .blog-post img {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-radius: 6px;
 }
 
+/* Buttons */
 .btn {
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  margin: 0.3rem;
   display: inline-block;
   background: #007bff;
   color: white;
@@ -41,16 +56,38 @@ body {
   border-radius: 4px;
   border: none;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #0056b3;
 }
 
 .btn.delete {
   background: #dc3545;
 }
 
-.btn.edit {
-  background: #ffc107;
+.btn.delete:hover {
+  background: #bd2130;
 }
 
+.btn.edit {
+  background: #ffc107;
+  color: black;
+}
+
+.btn.edit:hover {
+  background: #e0a800;
+}
+
+/* Inline delete form */
 form.delete-form {
   display: inline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-post {
+    width: 100%;
+  }
 }

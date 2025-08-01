@@ -27,5 +27,7 @@
     "url": "https://github.com/pranshuchauhancse/Blog-Website/issues"
   },
   "homepage": "https://github.com/pranshuchauhancse/Blog-Website#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
